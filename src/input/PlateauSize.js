@@ -1,4 +1,4 @@
-class PlateauSize
+export default class PlateauSize
 {
 	#x;
 	#y;

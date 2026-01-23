@@ -1,7 +1,9 @@
-export const Instruction = Object.freeze(
+const Instruction = Object.freeze(
 	{
 		LEFT: "L",
 		RIGHT: "R",
 		MOVE: "M"
 	}
 );
+
+export default Instruction;

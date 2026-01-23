@@ -6,7 +6,7 @@ export default class LandingParser
 	constructor () {};
 	validate(input)
 	{
-		// matches only two numbers, each with 2 digits max and 1 cardinal direction
+		// matches only two numbers, each with 2 digits max and 1 cardinal direction (chars "N", "E", "S" or "W")
 		// can have whitespace inbetween
 		const	regex = /^\d{1,2}\s+\d{1,2}\s+[NESW]{1}$/;
 

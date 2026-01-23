@@ -113,5 +113,7 @@ export default class Rover
 					break;
 			}
 		}
+		console.log("New position:");
+		console.log(this.#position.x, this.#position.y, this.#position.orientation);
 	}
 }

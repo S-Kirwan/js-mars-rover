@@ -1,4 +1,4 @@
-export const Orientation = Object.freeze(
+const Orientation = Object.freeze(
 	{
 		NORTH: "N",
 		EAST: "E",
@@ -6,3 +6,5 @@ export const Orientation = Object.freeze(
 		WEST: "W"
 	}
 );
+
+export default Orientation;

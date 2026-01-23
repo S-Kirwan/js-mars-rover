@@ -11,9 +11,9 @@ export default class InstructionParser
 	}
 	clearWhiteSpace(input)
 	{
-		const	regex = /\s/g;
+		const	whitespace = /\s/g;
 
-		return (input.replace(regex, ""));
+		return (input.replace(whitespace, ""));
 	}
 	parse(input)
 	{

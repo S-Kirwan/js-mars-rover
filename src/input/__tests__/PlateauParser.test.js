@@ -48,12 +48,30 @@ describe ("PlateauParser", () =>
 	test("Rejects more than two numbers", () =>
 	{
 		const	testPlateauParser= new PlateauParser();
-		const	input = "20 12 5";
+		const	threeInput = "20 12 5";
+		const	manyInput = "1 33 44 7 5 11 99 83 22";
+		
+		const	threeOutput = testPlateauParser.parse(threeInput);
+		const	manyOutput = testPlateauParser.parse(manyInput);
 
-		const	output = testPlateauParser.parse(input);
+		expect(threeOutput).toBe("error");
+		expect(manyOutput).toBe("error");
 
-		expect(output).toBe("error");
+	})
+	test("Rejects 0 as an option", () =>
+	{
+		const	testPlateauParser= new PlateauParser();
+		const	inputFirst = "0 5";
+		const	inputSecond= "5 0";
+		const	inputBoth = "0 0";
 
+		const	outputFirst = testPlateauParser.parse(inputFirst);
+		const	outputSecond= testPlateauParser.parse(inputSecond);
+		const	outputBoth = testPlateauParser.parse(inputBoth);
+
+		expect(outputFirst).toBe("error");
+		expect(outputSecond).toBe("error");
+		expect(outputBoth).toBe("error");
 	})
 	test("Returns PlateauSize class on valid input", () =>
 	{

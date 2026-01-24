@@ -23,7 +23,7 @@ export default class LandingParser
 	{
 		return (input.match(/[NESW]/));
 	}
-	parse(input)
+	parse(input, plateauSize)
 	{
 		const	rover = new Rover;
 		
@@ -36,6 +36,10 @@ export default class LandingParser
 		const	landingPos = new Position();
 		landingPos.x = Number(coords[0]);
 		landingPos.y = Number(coords[1]);
+		if (landingPos.x < 0 || landingPos.x > plateauSize.x)
+			return ("error");
+		if (landingPos.y < 0 || landingPos.y > plateauSize.y)
+			return ("error");
 		landingPos.orientation = orientation[0];
 		rover.position = landingPos;
 		return (rover);

@@ -6,9 +6,9 @@ export default class Rover
 {
 	#position;
 	#name;
-	constructor(x, y, orientation)
+	constructor(x, y, orientation, name = "Roger")
 	{
-		this.#name = "Roger";
+		this.#name = name; 
 		this.#position = new Position(x, y, orientation);
 	};
 	get position ()

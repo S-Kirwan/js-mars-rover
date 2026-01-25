@@ -23,6 +23,10 @@ export default class Rover
 	{
 		return (this.#name);
 	}
+	set name (name)
+	{
+		this.#name = name;
+	}
 	rotateLeft()
 	{
 		switch (this.#position.orientation)

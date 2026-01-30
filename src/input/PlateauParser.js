@@ -29,7 +29,7 @@ export default class PlateauParser
 		const	coordinates = this.extractCoordinates(input);
 		plateauSize.x = Number(coordinates[0]);
 		plateauSize.y = Number(coordinates[1]);
-		if (plateauSize.x === 0 || plateauSize.y === 0)
+		if (plateauSize.x <= 0 || plateauSize.y <= 0)
 			throw new Error('Invalid Plateau Size');
 		return (plateauSize);
 	}

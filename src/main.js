@@ -1,29 +1,41 @@
 import LandingParser from "./input/LandingParser.js";
 import InstructionParser from "./input/InstructionParser.js";
 import PlateauParser from "./input/PlateauParser.js";
+import UserInterface from "./ui/ui.js";
+import Plateau from "./logic/plateau.js";
 
 function	main()
 {
-	// temporary examples before logic to receive input
-	const	examplePlateauInput = "1 1";
-	const	exampleRoverLandingInput = "1 2 N";
-	const	exampleInstructionInput = "LMLMLMLMM"
-
 	const	plateauParser = new PlateauParser();
 	const	instructionParser = new InstructionParser();
 	const	landingParser = new LandingParser();
+	const	userInterface = new UserInterface();
+	let		plateauSize;
+	let		rover;
+	let		instructions;
 	
-	const	plateauSize = plateauParser.parse(examplePlateauInput);
-	const	instructions = instructionParser.parse(exampleInstructionInput);
-	const	rover = landingParser.parse(exampleRoverLandingInput);
-
+	userInterface.welcomeMessage();
 	try
 	{
+		plateauSize = userInterface.promptGrid(plateauParser);
+	}
+	catch (error)
+	{
+		console.log(error);
+		return ;
+	}
+	const	plateau = new Plateau(plateauSize);
+	try
+	{
+		rover = userInterface.promptLanding(landingParser);
+		plateau.addRover(rover);
+		instructions = userInterface.promptInstructions(instructionParser);
 		rover.executeInstructions(instructions, plateauSize);
 	}
 	catch (error)
 	{
 		console.log(error.message);
+		return ;
 	}
 }
 

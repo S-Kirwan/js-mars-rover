@@ -17,15 +17,17 @@ Designate a grid of the planet to explore, land rovers at certain points, and gi
 E.g '5 5'`
 		const	input = prompt(gridPrompt);
 		const	plateauSize = plateauParser.parse(input);
+
 		return (plateauSize);
 	}
 	promptLanding(landingParser)
 	{
 		const	landingPrompt = `Input landing coordinates of a rover, a compass direction the rover will be facing on landing (N, E, S, W), and a name for the rover. Coordinates must be no more than two digits, at least 0, and not beyond the size of the plateau.
-E.g '2 3 E Delilah`
+E.g '2 3 E Delilah'`
 
 		const input = prompt(landingPrompt);
 		const rover = landingParser.parse(input)
+
 		return (rover);
 	}
 	promptInstructions(instructionParser)
@@ -35,5 +37,7 @@ E.G 'MMLMLMMRMM Delilah`
 
 		const	input = prompt(instructionPrompt);
 		const	instructions = instructionParser.parse(input);
+
+		return (instructions);
 	}
 }

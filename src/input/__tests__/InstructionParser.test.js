@@ -7,27 +7,30 @@ describe("InstructionParser", () =>
 		const	testInstructionParser = new InstructionParser();
 		const	input = "";
 
-		const	output = testInstructionParser.parse(input);
-
-		expect(output).toBe("error");
+		expect(() =>
+		{
+			testInstructionParser.parse(input)
+		}).toThrow('Invalid Instructions');
 	})
 	test("Rejects invalid instructions with no correct characters", () =>
 	{
 		const	testInstructionParser = new InstructionParser();
 		const	input = "sadhnvweigbwenbg";
 
-		const	output = testInstructionParser.parse(input);
-
-		expect(output).toBe("error");
+		expect(() =>
+		{
+			testInstructionParser.parse(input)
+		}).toThrow('Invalid Instructions');
 	});
 	test("Rejects invalid instructions also containing valid characters", () =>
 	{
 		const	testInstructionParser = new InstructionParser();
 		const	input = "sadhnLRvweiMMgRLMbwenbg";
 
-		const	output = testInstructionParser.parse(input);
-
-		expect(output).toBe("error");
+		expect(() =>
+		{
+			testInstructionParser.parse(input)
+		}).toThrow('Invalid Instructions');
 	})
 	test("Accepts one valid instruction", () =>
 	{

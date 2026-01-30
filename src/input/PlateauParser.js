@@ -24,13 +24,13 @@ export default class PlateauParser
 
 		input = input.trim();
 		if (this.validate(input) === false)
-			return ("error");
+			throw new Error('Invalid Plateau Format');
 
 		const	coordinates = this.extractCoordinates(input);
 		plateauSize.x = Number(coordinates[0]);
 		plateauSize.y = Number(coordinates[1]);
 		if (plateauSize.x === 0 || plateauSize.y === 0)
-			return ("error");
+			throw new Error('Invalid Plateau Size');
 		return (plateauSize);
 	}
 }

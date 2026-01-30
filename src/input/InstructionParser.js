@@ -21,7 +21,7 @@ export default class InstructionParser
 
 		input = this.clearWhiteSpace(input);
 		if (this.validate(input) === false)
-			return ("error");
+			throw new Error('Invalid Instructions');
 		for (let i = 0; i < input.length; i++)
 		{
 			switch (input[i])
@@ -36,7 +36,7 @@ export default class InstructionParser
 					instructions.push(Instruction.MOVE)
 					break;
 				default :
-					return ("error");
+					throw new Error('Invalid Instruction');
 					break;
 			}
 		}

@@ -8,27 +8,30 @@ describe ("PlateauParser", () =>
 		const	testPlateauParser = new PlateauParser();
 		const	input = "";
 
-		const	output = testPlateauParser.parse(input);
-
-		expect(output).toBe("error");
+		expect(() =>
+		{
+			testPlateauParser.parse(input);
+		}).toThrow('Invalid Plateau Format');
 	})
 	test("Rejects invalid instructions with no correct characters", () =>
 	{
 		const	testPlateauParser = new PlateauParser();
 		const	input = "sadhnvweigbwenbg";
 
-		const	output = testPlateauParser.parse(input);
-
-		expect(output).toBe("error");
+		expect(() =>
+		{
+			testPlateauParser.parse(input);
+		}).toThrow('Invalid Plateau Format');
 	});
 	test("Rejects invalid instructions also containing valid characters", () =>
 	{
 		const	testPlateauParser= new PlateauParser();
 		const	input = "sad22hnv12weigbwenbg";
 
-		const	output = testPlateauParser.parse(input);
-
-		expect(output).toBe("error");
+		expect(() =>
+		{
+			testPlateauParser.parse(input);
+		}).toThrow('Invalid Plateau Format');
 	})
 	test("Rejects numbers over two digits", () =>
 	{
@@ -37,13 +40,18 @@ describe ("PlateauParser", () =>
 		const	secondNumOver = "23 224";
 		const	bothNumsOver = "22312 2235";
 
-		const	firstNumOutput= testPlateauParser.parse(firstNumOver);
-		const	secondNumOutput = testPlateauParser.parse(secondNumOver);
-		const	bothNumsOutput = testPlateauParser.parse(bothNumsOver);
-
-		expect(firstNumOutput).toBe("error");
-		expect(secondNumOutput).toBe("error");
-		expect(bothNumsOutput).toBe("error");
+		expect(() =>
+		{
+			testPlateauParser.parse(firstNumOver);
+		}).toThrow('Invalid Plateau Format');
+		expect(() =>
+		{
+			testPlateauParser.parse(secondNumOver);
+		}).toThrow('Invalid Plateau Format');
+		expect(() =>
+		{
+			testPlateauParser.parse(bothNumsOver);
+		}).toThrow('Invalid Plateau Format');
 	})
 	test("Rejects more than two numbers", () =>
 	{
@@ -51,27 +59,54 @@ describe ("PlateauParser", () =>
 		const	threeInput = "20 12 5";
 		const	manyInput = "1 33 44 7 5 11 99 83 22";
 		
-		const	threeOutput = testPlateauParser.parse(threeInput);
-		const	manyOutput = testPlateauParser.parse(manyInput);
-
-		expect(threeOutput).toBe("error");
-		expect(manyOutput).toBe("error");
-
+		expect(() =>
+		{
+			testPlateauParser.parse(threeInput);
+		}).toThrow('Invalid Plateau Format');
+		expect(() =>
+		{
+			testPlateauParser.parse(manyInput);
+		}).toThrow('Invalid Plateau Format');
 	})
 	test("Rejects 0 as an option", () =>
 	{
-		const	testPlateauParser= new PlateauParser();
+		const	testPlateauParser = new PlateauParser();
 		const	inputFirst = "0 5";
 		const	inputSecond= "5 0";
 		const	inputBoth = "0 0";
 
-		const	outputFirst = testPlateauParser.parse(inputFirst);
-		const	outputSecond= testPlateauParser.parse(inputSecond);
-		const	outputBoth = testPlateauParser.parse(inputBoth);
+		expect(() =>
+		{
+			testPlateauParser.parse(inputFirst);
+		}).toThrow('Invalid Plateau Size');
+		expect(() =>
+		{
+			testPlateauParser.parse(inputSecond);
+		}).toThrow('Invalid Plateau Size');
+		expect(() =>
+		{
+			testPlateauParser.parse(inputBoth);
+		}).toThrow('Invalid Plateau Size');
+	})
+	test("Rejects negative numbers", () =>
+	{
+		const	testPlateauParser = new PlateauParser();
+		const	inputFirst = "-5 5";
+		const	inputSecond= "5 -9";
+		const	inputBoth = "-12 -4";
 
-		expect(outputFirst).toBe("error");
-		expect(outputSecond).toBe("error");
-		expect(outputBoth).toBe("error");
+		expect(() =>
+		{
+			testPlateauParser.parse(inputFirst);
+		}).toThrow('Invalid Plateau Format');
+		expect(() =>
+		{
+			testPlateauParser.parse(inputSecond);
+		}).toThrow('Invalid Plateau Format');
+		expect(() =>
+		{
+			testPlateauParser.parse(inputBoth);
+		}).toThrow('Invalid Plateau Format');
 	})
 	test("Returns PlateauSize class on valid input", () =>
 	{
